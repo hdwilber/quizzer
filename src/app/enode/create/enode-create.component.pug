@@ -1,0 +1,34 @@
+.container
+  .row
+    .col.m12
+      div(*ngIf="types")
+        label
+          | Code:
+        .input-field
+          input.form-control([(ngModel)]="tmp.code" type='text', placeholder='Code')
+        label
+          | Label:
+        .input-field
+          textarea.form-control( [(ngModel)]="tmp.label" type='text', placeholder='Label')
+
+
+        label
+          | Place
+        select([(ngModel)]="tmp.addingType")
+          option(*ngFor="let at of addingTypes", [ngValue]="at")
+            | {{at.name}}
+
+        ul.types-list
+          li(*ngFor='let t of types', (click)='setType(t)', [class.selected]='tmp.type == t')
+            | {{t.name}}
+        
+
+        ng-template(dialog-anchor)
+
+
+      .quest-footer
+        button((click)="create()" type='button')
+          | Create 
+        button((click)="cancel()" type='button')
+          | Cancel
+       

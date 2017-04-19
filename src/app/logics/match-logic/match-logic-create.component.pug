@@ -1,0 +1,8 @@
+.input-row
+  label
+    | Boolean Operator
+  select([(ngModel)]="tmp.bool")
+    option(disabled) 
+      | Select an Action
+    option(*ngFor="let aco of getBoolTypes()", [value]="aco")
+      | {{aco.name}}

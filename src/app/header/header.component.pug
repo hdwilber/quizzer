@@ -1,0 +1,15 @@
+nav
+  .nav-wrapper
+    a.brand-logo([routerLink]="'/'")
+      | Quizzer
+    ul.right.hide-on-med-and-down
+      li
+        a(prouterLink='/manager', routerLinkActive='active') 
+          | Manager
+      li
+        a(routerLink='/login', routerLinkActive='active') 
+          | Login
+      li
+        a(*ngIf="session != null", routerLink='/login', routerLinkActive='active', (click)="logoutFnc()") 
+          | Login
+

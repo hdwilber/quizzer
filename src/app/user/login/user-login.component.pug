@@ -1,0 +1,15 @@
+.login-form
+  | Login
+  .form-group
+    .input-row
+      label
+        | Email:
+      input(placeholder="Email", [(ngModel)]='user.email')
+    .input-row
+      label
+        | Password:
+      input(type="password", placeholder="Password", [(ngModel)]='user.password')
+    .input-row
+      button((click)="login()")
+        | Login
+

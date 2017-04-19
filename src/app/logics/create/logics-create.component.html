@@ -1,0 +1,20 @@
+
+<div>
+  <div class="types">
+    <label *ngFor="let t of types" type="radio">
+      <input type="radio" (click)="setType(t)">{{t}}
+    </label>
+  </div>
+  <div class="input-row">Code: 
+    <input [(ngModel)]="tmp.code" type="text" placeholder="Code">
+  </div>
+  <div class="input-row">
+    <label>Label:</label>
+    <input [(ngModel)]="tmp.label" type="text" placeholder="Label">
+  </div>
+  <ng-template dialog-anchor></ng-template>
+  <div class="input-row">
+    <button (click)="create()" type="button">Create </button>
+    <button (click)="cancel()" type="button">Cancel</button>
+  </div>
+</div>

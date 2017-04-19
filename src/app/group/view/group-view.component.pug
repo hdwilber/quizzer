@@ -1,0 +1,8 @@
+.group(*ngIf='enode')
+  p(*ngIf='!enode.data.default_visibility')
+    | Not visible by default
+  p.title
+    | {{enode.label.data}}
+  .questions(*ngFor='let o of enode.children')
+    question-view([enode]='o')
+

@@ -1,0 +1,14 @@
+.types-list {
+  list-style: none;
+  padding: 5px;
+  text-align: center;
+  li {
+    display: inline-block;
+    border: solid 2px white;
+
+    &.selected {
+      border-color: #a1a1a1;
+    }
+
+  }
+}

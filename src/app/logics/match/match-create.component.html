@@ -1,0 +1,13 @@
+
+<div class="input-row" *ngIf="root">
+  <label>Operator</label>
+  <select class="form-control" [(ngModel)]="tmp.operator">
+    <option disabled>
+       Select an Action</option>
+    <option *ngFor="let op of getOperatorTypes()" [ngValue]="op">{{op.name}}</option>
+  </select>
+  <label>Select target</label>
+  <div class="catalog-wrapper">
+    <enode [enode]="root" [current]="tmp.target" (seleted)="handleSelectedTarget($event)"></enode>
+  </div>
+</div>

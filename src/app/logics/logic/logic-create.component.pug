@@ -1,0 +1,8 @@
+.types
+  label
+    | Action
+  select([(ngModel)]="tmp.action")
+    option(disabled) 
+      | Select an Action
+    option(*ngFor="let aco of getLogicActions()", [ngValue]="aco")
+      | {{aco.name}}

@@ -1,0 +1,8 @@
+
+<h1 *ngIf="quest">Questionary</h1>
+<div>
+  <p>Code: {{enode.code}}</p>
+  <p>Label: {{enode.label.data}}</p>
+  <button (click)="update()" type="button">Create </button>
+  <button (click)="cancel()" type="button">Cancel</button>
+</div>

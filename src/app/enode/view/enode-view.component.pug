@@ -1,0 +1,39 @@
+div(*ngIf="enode")
+  ul.tabs
+    li.tab(*ngFor="let t of tabs", (click)="changeTab(t)")
+      a([class.active]="t == currentTab")
+        | {{t.name}}
+  
+  .enode-edit.general([hidden]="!(currentTab.code == 'general')")
+    p.code
+      | Code: {{enode.code}}
+    p.label-text
+      | Label: {{enode.label.data}}
+
+  .enode-edit.specific([hidden]="!(currentTab.code == 'specific')")
+    group-view(*ngIf="enode.type=='group'", [enode]='enode')
+    question-view(*ngIf="enode.type=='question'", [enode]='enode')
+    option-view(*ngIf="enode.type=='option'", [enode]='enode')
+
+  .enode-edit.logics([hidden]="!(currentTab.code == 'logics')")
+    button((click)="createLogicElement()")
+      | Create Logic Element
+    enode(*ngIf='enode.logics', [enode]="enode.logics", [current]='selectedLogic', (selected)="handleSelectedLogic($event)")
+
+    ng-template(dialog-anchor)
+
+    //-logics-create([ref]="enode", [root]="root")
+
+  .enode-edit.stats([hidden]="!(currentTab.code == 'stats')")
+    h4 
+      | {{currentTab.name}}
+    p.code
+      | Code: {{enode.code}}
+    p.label-text
+      | Label: {{enode.label.data}}
+
+    button((click)="update()" type='button')
+      | Create 
+    button((click)="cancel()" type='button')
+      | Cancel
+   

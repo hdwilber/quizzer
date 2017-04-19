@@ -1,0 +1,16 @@
+.tabs {
+  list-style: none;
+  .tab {
+    display: inline-block;
+    a {
+      border-bottom: solid 2px transparent;
+      padding-left: 1em;
+      padding-right: 1em;
+
+      transition: 0.5s;
+      &.active {
+        border-bottom-color: #ff3300;
+      }
+    }
+  }
+}

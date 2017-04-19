@@ -1,0 +1,17 @@
+.content-main
+  .row
+    .col.m3
+      .enodes-viewer
+        enode(*ngIf='qRoot', [enode]="qRoot", [current]='selected', (selected)="handleSelected($event)")
+
+    .col.m9
+      button((click)="create()")
+        | Create Enode
+      button((click)="edit()")
+        | Edit Enode
+      button((click)="delete()")
+        | Delete Enode
+      ng-template(dialog-anchor)
+      .enodes-edition(*ngIf="selected")
+        enode-view([enode]="selected", [root]="selectedRoot")
+

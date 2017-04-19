@@ -1,0 +1,29 @@
+.question(*ngIf='enode')
+  p(*ngIf='!enode.data.default_visibility')
+    | Not visible by default
+  .question-selection(*ngIf="enode.data.type == 'selection'")
+    .selection-simple(*ngIf="enode.data.sub_type == 'simple'")
+      p.title
+        | {{enode.label.data}}
+      .options(*ngFor='let o of enode.children')
+        option-view([enode]='o')
+
+    .selection-level(*ngIf="enode.data.sub_type == 'level'")
+      p.title
+        | {{enode.label.data}}
+        input(type='number')
+        
+  .question-selection(*ngIf="enode.data.type == 'input'")
+    .input-text(*ngIf="enode.data.sub_type == 'text'")
+      label
+        | {{enode.label.data}}
+      option-view(*ngIf="enode.children.length == 1", [enode]="enode.children[0]")
+
+  .question-selection(*ngIf="enode.data.type == 'remark'")
+    hr
+    p.remark
+      | {{enode.label.data}}
+    hr
+
+
+

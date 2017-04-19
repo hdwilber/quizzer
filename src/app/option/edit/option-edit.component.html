@@ -1,0 +1,17 @@
+
+<div *ngIf="data">
+  <div class="input-row">
+    <label>Type:</label>
+    <select [(ngModel)]="data.type" placeholder="Type">
+      <option *ngFor="let t of getOptionTypes()" [ngValue]="t">{{t.name}}</option>
+    </select>
+  </div>
+  <div class="input-row">
+    <label>Value</label>
+    <input [(ngModel)]="data.value" type="text" placeholder="Value">
+  </div>
+  <div class="input-row">
+    <label>Extra</label>
+    <input [(ngModel)]="data.extra" type="text" placeholder="Extra data">
+  </div>
+</div>

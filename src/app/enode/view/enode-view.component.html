@@ -1,0 +1,28 @@
+
+<div *ngIf="enode">
+  <ul class="tabs">
+    <li class="tab" *ngFor="let t of tabs" (click)="changeTab(t)"><a [class.active]="t == currentTab">{{t.name}}</a></li>
+  </ul>
+  <div class="enode-edit general" [hidden]="!(currentTab.code == 'general')">
+    <p class="code">Code: {{enode.code}}</p>
+    <p class="label-text">Label: {{enode.label.data}}</p>
+  </div>
+  <div class="enode-edit specific" [hidden]="!(currentTab.code == 'specific')">
+    <group-view *ngIf="enode.type=='group'" [enode]="enode"></group-view>
+    <question-view *ngIf="enode.type=='question'" [enode]="enode"></question-view>
+    <option-view *ngIf="enode.type=='option'" [enode]="enode"></option-view>
+  </div>
+  <div class="enode-edit logics" [hidden]="!(currentTab.code == 'logics')">
+    <button (click)="createLogicElement()">Create Logic Element</button>
+    <enode *ngIf="enode.logics" [enode]="enode.logics" [current]="selectedLogic" (selected)="handleSelectedLogic($event)"></enode>
+    <ng-template dialog-anchor></ng-template>
+  </div>
+  <div class="enode-edit stats" [hidden]="!(currentTab.code == 'stats')">
+    <h4>
+       {{currentTab.name}}</h4>
+    <p class="code">Code: {{enode.code}}</p>
+    <p class="label-text">Label: {{enode.label.data}}</p>
+    <button (click)="update()" type="button">Create </button>
+    <button (click)="cancel()" type="button">Cancel</button>
+  </div>
+</div>

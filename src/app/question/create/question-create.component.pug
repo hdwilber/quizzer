@@ -1,0 +1,18 @@
+div
+  .input-row
+    label
+      | Type: 
+    select([(ngModel)]="tmp.type", placeholder='Type')
+      option(*ngFor="let t of getQuestionTypes()", [ngValue]="t")
+        | {{t.name}}
+  .input-row
+    label
+      | Sub Type: 
+    select(*ngIf="tmp.type != null", [(ngModel)]="tmp.subType", placeholder='Sub Type')
+      option(*ngFor="let r of tmp.type.subTypes", [ngValue]="r")
+        | {{r.name}}
+  .input-row
+    label
+      | Visibility:
+    input([(ngModel)]="tmp.visibility" type='checkbox', placeholder='Default visibility', name='visibility')
+

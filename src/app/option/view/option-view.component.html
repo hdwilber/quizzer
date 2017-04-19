@@ -1,0 +1,18 @@
+
+<div class="option-view" *ngIf="enode">
+  <label *ngIf="enode.data.type == 'option'">
+    <input type="radio" [name]="enode.id">{{enode.label.data}}
+  </label>
+  <div class="option-text" *ngIf="enode.data.type == 'text-short'">
+    <input type="text" [name]="enode.id">
+  </div>
+  <div class="option-text" *ngIf="enode.data.type == 'text-long'">
+    <textarea [name]="enode.id"></textarea>
+  </div>
+  <div class="option-text" *ngIf="enode.data.type == 'min'">
+    <label>Level Minimum: {{enode.data.value}}</label>
+  </div>
+  <div class="option-text" *ngIf="enode.data.type == 'max'">
+    <label>Level Maximum: {{enode.data.value}}</label>
+  </div>
+</div>

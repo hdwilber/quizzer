@@ -1,0 +1,19 @@
+
+<div>
+  <div class="input-row">
+    <label>Type: </label>
+    <select [(ngModel)]="tmp.type" placeholder="Type">
+      <option *ngFor="let t of getQuestionTypes()" [ngValue]="t">{{t.name}}</option>
+    </select>
+  </div>
+  <div class="input-row">
+    <label>Sub Type: </label>
+    <select *ngIf="tmp.type != null" [(ngModel)]="tmp.subType" placeholder="Sub Type">
+      <option *ngFor="let r of tmp.type.subTypes" [ngValue]="r">{{r.name}}</option>
+    </select>
+  </div>
+  <div class="input-row">
+    <label>Visibility:</label>
+    <input [(ngModel)]="tmp.visibility" type="checkbox" placeholder="Default visibility" name="visibility">
+  </div>
+</div>

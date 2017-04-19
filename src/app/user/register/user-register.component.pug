@@ -1,0 +1,11 @@
+.register-form
+  | Register
+  .form-group
+    .input-field
+      input(placeholder="Email", [(ngModel)]='user.email')
+    .input-field
+      input(type="password", placeholder="Password", [(ngModel)]='user.password')
+    .input-row
+      button((click)="register()")
+        | Register
+

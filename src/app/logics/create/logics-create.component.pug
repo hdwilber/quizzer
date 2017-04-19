@@ -1,0 +1,20 @@
+div
+  .types
+    label(*ngFor='let t of types', type='radio', )
+      input(type='radio', (click)="setType(t)")
+      | {{t}}
+
+  .input-row
+    | Code: 
+    input([(ngModel)]="tmp.code" type='text', placeholder='Code')
+  .input-row
+    label
+      | Label:
+    input([(ngModel)]="tmp.label" type='text', placeholder='Label')
+
+  ng-template(dialog-anchor)
+  .input-row
+    button((click)="create()" type='button')
+      | Create 
+    button((click)="cancel()" type='button')
+      | Cancel

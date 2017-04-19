@@ -1,0 +1,16 @@
+div
+  .input-row
+    label
+      | Type:
+    select([(ngModel)]="tmp.type", placeholder='Type')
+      option(*ngFor="let t of getOptionTypes()", [ngValue]="t")
+        | {{t.name}}
+  .input-row
+    label
+      | Value
+    input([(ngModel)]="tmp.value" type='text', placeholder='Value')
+  .input-row
+    label
+      | Extra
+    input([(ngModel)]="tmp.extra" type='text', placeholder='Extra data')
+

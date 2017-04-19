@@ -1,0 +1,9 @@
+
+<div class="types">
+  <label>Action</label>
+  <select [(ngModel)]="tmp.action">
+    <option disabled>
+       Select an Action</option>
+    <option *ngFor="let aco of getLogicActions()" [ngValue]="aco">{{aco.name}}</option>
+  </select>
+</div>

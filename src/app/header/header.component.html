@@ -1,0 +1,13 @@
+
+<nav>
+  <div class="nav-wrapper"><a class="brand-logo" [routerLink]="'/'">Quizzer</a>
+    <ul class="right hide-on-med-and-down">
+      <li><a prouterLink="/manager" routerLinkActive="active">
+           Manager</a></li>
+      <li><a routerLink="/login" routerLinkActive="active">
+           Login</a></li>
+      <li><a *ngIf="session != null" routerLink="/login" routerLinkActive="active" (click)="logoutFnc()">
+           Login</a></li>
+    </ul>
+  </div>
+</nav>

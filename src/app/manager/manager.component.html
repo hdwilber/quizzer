@@ -1,0 +1,19 @@
+
+<div class="content-main">
+  <div class="row">
+    <div class="col m3">
+      <div class="enodes-viewer">
+        <enode *ngIf="qRoot" [enode]="qRoot" [current]="selected" (selected)="handleSelected($event)"></enode>
+      </div>
+    </div>
+    <div class="col m9">
+      <button (click)="create()">Create Enode</button>
+      <button (click)="edit()">Edit Enode</button>
+      <button (click)="delete()">Delete Enode</button>
+      <ng-template dialog-anchor></ng-template>
+      <div class="enodes-edition" *ngIf="selected">
+        <enode-view [enode]="selected" [root]="selectedRoot"></enode-view>
+      </div>
+    </div>
+  </div>
+</div>

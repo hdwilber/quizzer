@@ -1,0 +1,29 @@
+
+<div class="container">
+  <div class="row">
+    <div class="col m12">
+      <div *ngIf="types">
+        <label>Code:</label>
+        <div class="input-field">
+          <input class="form-control" [(ngModel)]="tmp.code" type="text" placeholder="Code">
+        </div>
+        <label>Label:</label>
+        <div class="input-field">
+          <textarea class="form-control" [(ngModel)]="tmp.label" type="text" placeholder="Label"></textarea>
+        </div>
+        <label>Place</label>
+        <select [(ngModel)]="tmp.addingType">
+          <option *ngFor="let at of addingTypes" [ngValue]="at">{{at.name}}</option>
+        </select>
+        <ul class="types-list">
+          <li *ngFor="let t of types" (click)="setType(t)" [class.selected]="tmp.type == t">{{t.name}}</li>
+        </ul>
+        <ng-template dialog-anchor></ng-template>
+      </div>
+      <div class="quest-footer">
+        <button (click)="create()" type="button">Create </button>
+        <button (click)="cancel()" type="button">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,12 @@
+
+<div class="enode" *ngIf="enode != null">
+  <div class="enode-content" *ngIf="enode.type != 'root'">
+    <input type="checkbox" [checked]="enode.expanded" (click)="toggleExpand(enode)" [id]="enode.id">
+    <label (click)="select(enode)" [class.selected]="current === enode"><img *ngIf="enode.type == 'question'" src="/assets/questionico.png"><img *ngIf="enode.type == 'questionary'" src="/assets/questico.png"><img *ngIf="enode.type == 'group'" src="/assets/groupico.png"><img *ngIf="enode.type == 'option'" src="/assets/optionico.png"><img *ngIf="enode.type == 'logic'" src="/assets/logicico.png"><img *ngIf="enode.type == 'match-logic'" src="/assets/mlogicico.png"><img *ngIf="enode.type == 'match'" src="/assets/matchico.png"><span *ngIf="enode.code !==  undefined">{{enode.code}}</span></label>
+  </div>
+  <div class="enode-children" style="margin-left: 15px" *ngIf="enode.expanded">
+    <div class="children" *ngFor="let c of enode.children">
+      <enode [enode]="c" [current]="current" (selected)="functionde($event)"></enode>
+    </div>
+  </div>
+</div>

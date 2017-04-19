@@ -1,0 +1,28 @@
+
+<div class="question" *ngIf="enode">
+  <p *ngIf="!enode.data.default_visibility">Not visible by default</p>
+  <div class="question-selection" *ngIf="enode.data.type == 'selection'">
+    <div class="selection-simple" *ngIf="enode.data.sub_type == 'simple'">
+      <p class="title">{{enode.label.data}}</p>
+      <div class="options" *ngFor="let o of enode.children">
+        <option-view [enode]="o"></option-view>
+      </div>
+    </div>
+    <div class="selection-level" *ngIf="enode.data.sub_type == 'level'">
+      <p class="title">{{enode.label.data}}
+        <input type="number">
+      </p>
+    </div>
+  </div>
+  <div class="question-selection" *ngIf="enode.data.type == 'input'">
+    <div class="input-text" *ngIf="enode.data.sub_type == 'text'">
+      <label>{{enode.label.data}}</label>
+      <option-view *ngIf="enode.children.length == 1" [enode]="enode.children[0]"></option-view>
+    </div>
+  </div>
+  <div class="question-selection" *ngIf="enode.data.type == 'remark'">
+    <hr>
+    <p class="remark">{{enode.label.data}}</p>
+    <hr>
+  </div>
+</div>

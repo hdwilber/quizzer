@@ -1,0 +1,30 @@
+.container
+  .row
+    .col.m12
+      div(*ngIf="tmp")
+        .input-row
+          label
+            img(*ngIf="tmp.type == 'question'", src='/assets/questionico.png')
+            img(*ngIf="tmp.type == 'questionary'", src='/assets/questico.png')
+            img(*ngIf="tmp.type == 'group'", src='/assets/groupico.png')
+            img(*ngIf="tmp.type == 'option'", src='/assets/optionico.png')
+            img(*ngIf="tmp.type == 'logic'", src='/assets/logicico.png')
+            img(*ngIf="tmp.type == 'match-logic'", src='/assets/mlogicico.png')
+            img(*ngIf="tmp.type == 'match'", src='/assets/matchico.png')
+        .input-row
+          label
+            | Code:
+          input.form-control([(ngModel)]="tmp.code" type='text', placeholder='Code')
+        .input-row
+          label
+            | Label:
+          .input-field
+            textarea.form-control( [(ngModel)]="tmp.label.data" type='text', placeholder='Label')
+      ng-template(dialog-anchor)
+
+      .quest-footer
+        button((click)="update()" type='button')
+          | Update 
+        button((click)="cancel()" type='button')
+          | Cancel
+       

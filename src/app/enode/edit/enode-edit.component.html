@@ -1,0 +1,27 @@
+
+<div class="container">
+  <div class="row">
+    <div class="col m12">
+      <div *ngIf="tmp">
+        <div class="input-row">
+          <label><img *ngIf="tmp.type == 'question'" src="/assets/questionico.png"><img *ngIf="tmp.type == 'questionary'" src="/assets/questico.png"><img *ngIf="tmp.type == 'group'" src="/assets/groupico.png"><img *ngIf="tmp.type == 'option'" src="/assets/optionico.png"><img *ngIf="tmp.type == 'logic'" src="/assets/logicico.png"><img *ngIf="tmp.type == 'match-logic'" src="/assets/mlogicico.png"><img *ngIf="tmp.type == 'match'" src="/assets/matchico.png"></label>
+        </div>
+        <div class="input-row">
+          <label>Code:</label>
+          <input class="form-control" [(ngModel)]="tmp.code" type="text" placeholder="Code">
+        </div>
+        <div class="input-row">
+          <label>Label:</label>
+          <div class="input-field">
+            <textarea class="form-control" [(ngModel)]="tmp.label.data" type="text" placeholder="Label"></textarea>
+          </div>
+        </div>
+      </div>
+      <ng-template dialog-anchor></ng-template>
+      <div class="quest-footer">
+        <button (click)="update()" type="button">Update </button>
+        <button (click)="cancel()" type="button">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>

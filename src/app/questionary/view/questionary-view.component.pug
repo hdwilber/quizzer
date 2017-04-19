@@ -1,0 +1,13 @@
+h1(*ngIf="quest")
+  | Questionary
+div
+  p
+    | Code: {{enode.code}}
+  p
+    | Label: {{enode.label.data}}
+
+  button((click)="update()" type='button')
+    | Create 
+  button((click)="cancel()" type='button')
+    | Cancel
+ 
