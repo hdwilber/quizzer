@@ -4,6 +4,6 @@
   <select [(ngModel)]="tmp.bool">
     <option disabled>
        Select an Action</option>
-    <option *ngFor="let aco of getBoolTypes()" [value]="aco">{{aco.name}}</option>
+    <option *ngFor="let aco of getBoolTypes()" [ngValue]="aco">{{aco.name}}</option>
   </select>
 </div>

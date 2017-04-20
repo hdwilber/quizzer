@@ -19,11 +19,13 @@ import { Enode } from "../../enode/common/types";
 export class MatchCreateComponent implements OnInit {
   root: Enode;
   tmp:any;
+  targetIdx = 0;
 
   constructor (private router: Router) {
     this.tmp = { 
       operator: null,
-      target: null
+      target: null,
+      targetOption: null
     };
   }
   ngOnInit():void  {
@@ -39,14 +41,27 @@ export class MatchCreateComponent implements OnInit {
 
   getData() {
     return {
-      mOperator: this.tmp.operator,
+      mOperator: this.tmp.operator.code,
       mTarget: this.tmp.target.id,
-      mTarget_value: null
+      mTargetValue: null,
+      mOption: this.tmp.targetOption.id,
+      type: 'match'
     };
   }
 
+  setTarget(i:number) {
+    this.targetIdx = i;
+  }
+
   handleSelectedTarget(t: Enode) {
-    this.tmp.target = t;
+    switch(this.targetIdx){
+      case 0: 
+        this.tmp.target = t;
+        break;
+      case 1:
+        this.tmp.targetOption = t;
+        break;
+    }
     console.log(t);
   }
 }

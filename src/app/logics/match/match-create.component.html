@@ -6,8 +6,11 @@
        Select an Action</option>
     <option *ngFor="let op of getOperatorTypes()" [ngValue]="op">{{op.name}}</option>
   </select>
-  <label>Select target</label>
+  <button *ngIf="tmp.target">{{tmp.target.code}}</button>
+  <button *ngIf="!tmp.target" (click)="setTarget(0)" [class.active]="tmp.targetIdx == 0">Select a Target</button>
+  <button *ngIf="tmp.targetOption">{{tmp.targetOption.code}}</button>
+  <button *ngIf="!tmp.targetOption" (click)="setTarget(1)" [class.active]="tmp.targetIdx == 1">Select a Target Option</button>
   <div class="catalog-wrapper">
-    <enode [enode]="root" [current]="tmp.target" (seleted)="handleSelectedTarget($event)"></enode>
+    <enode [enode]="root" [current]="tmp.target" (selected)="handleSelectedTarget($event)"></enode>
   </div>
 </div>

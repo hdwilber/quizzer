@@ -22,6 +22,7 @@ export class LogicCreateComponent implements OnInit {
     this.tmp = { 
       action: null,
     };
+    this.tmp.action = Logic.ACTION_TYPES.find(e=> { return (e.code == 'show'); })
   }
   ngOnInit():void  {
   }

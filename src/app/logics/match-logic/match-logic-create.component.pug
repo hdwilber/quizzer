@@ -4,5 +4,5 @@
   select([(ngModel)]="tmp.bool")
     option(disabled) 
       | Select an Action
-    option(*ngFor="let aco of getBoolTypes()", [value]="aco")
+    option(*ngFor="let aco of getBoolTypes()", [ngValue]="aco")
       | {{aco.name}}

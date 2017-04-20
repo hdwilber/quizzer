@@ -17,6 +17,7 @@ export class MatchLogicCreateComponent implements OnInit {
     this.tmp = { 
       bool: null
     };
+    this.tmp.bool = MatchLogic.BOOL_TYPES.find(e=> { return (e.code == 'and'); })
   }
   ngOnInit():void  {
   }

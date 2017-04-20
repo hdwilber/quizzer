@@ -28,7 +28,16 @@ export class LogicsCreateComponent implements OnInit {
   tmp:any;
   @ViewChild(DialogDirective) dialogAnchor: DialogDirective;
   dialogRef: ComponentRef<any>; 
-  types = ["logic", "match-logic", "match"];
+  types = [{
+    img: '/assets/logicico.png',
+    code: 'logic'
+  }, {
+    img: '/assets/mlogicico.png',
+    code: 'match-logic'
+  }, {
+    img: '/assets/matchico.png',
+    code: 'match'
+  }];
   close = new EventEmitter();
 
   constructor (private router: Router, private lService:LogicService, private eService: EnodeService){
@@ -57,7 +66,7 @@ export class LogicsCreateComponent implements OnInit {
 
   setType(t) {
     this.tmp.type = t;
-    switch(t) {
+    switch(t.code) {
       case 'logic':
         this.dialogRef = this.dialogAnchor.createDialog(LogicCreateComponent);
         break;
@@ -74,7 +83,7 @@ export class LogicsCreateComponent implements OnInit {
 
   create() {
     let data = this.dialogRef.instance.getData();
-    if (data.type == 'logic') {
+    if (data.type.code == 'logic') {
       data.eRef = this.enode.id;
     } else {
       data.eRef = this.ref.id;
@@ -90,7 +99,7 @@ export class LogicsCreateComponent implements OnInit {
 
     this.eService.create(data)
     .then( q => {
-      if (data.type == "logic") {
+      if (data.type.code == "logic") {
         data.ref = this.enode.logics;
       } else {
         data.ref = this.ref;

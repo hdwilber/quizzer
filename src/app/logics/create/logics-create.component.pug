@@ -1,8 +1,8 @@
 div
   .types
-    label(*ngFor='let t of types', type='radio', )
-      input(type='radio', (click)="setType(t)")
-      | {{t}}
+    label(*ngFor='let t of types', (click)="setType(t)")
+      img([src]="t.img")
+      | {{t.code}}
 
   .input-row
     | Code: 

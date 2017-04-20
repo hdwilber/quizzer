@@ -1,9 +1,7 @@
 
 <div>
   <div class="types">
-    <label *ngFor="let t of types" type="radio">
-      <input type="radio" (click)="setType(t)">{{t}}
-    </label>
+    <label *ngFor="let t of types" (click)="setType(t)"><img [src]="t.img">{{t.code}}</label>
   </div>
   <div class="input-row">Code: 
     <input [(ngModel)]="tmp.code" type="text" placeholder="Code">
