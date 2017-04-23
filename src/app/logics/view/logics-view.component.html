@@ -1,0 +1,6 @@
+
+<div *ngIf="enode">
+  <match-view *ngIf="enode.type=='match'" [enode]="enode"></match-view>
+  <match-logic-view *ngIf="enode.type=='match-logic'" [enode]="enode"></match-logic-view>
+  <logic-view *ngIf="enode.type=='logic'" [enode]="enode"></logic-view>
+</div>

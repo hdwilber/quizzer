@@ -1,0 +1,10 @@
+
+<div class="ml" *ngIf="enode">
+  <p>Boolean Operator: {{enode.data.bool}}</p>
+  <ul class="ml-children">
+    <li *ngFor="let d of enode.children"> 
+      <match-view *ngIf="d.type == 'match'" [enode]="d"></match-view>
+      <match-logic-view *ngIf="d.type == 'match-logic'" [enode]="d"></match-logic-view>
+    </li>
+  </ul>
+</div>

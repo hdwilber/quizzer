@@ -16,4 +16,13 @@
     <label>Visibility:</label>
     <input [(ngModel)]="data.visibility" type="checkbox" placeholder="Default visibility" name="visibility">
   </div>
+  <div class="input-row">
+    <label>Linked:</label>
+    <input [(ngModel)]="data.linked" type="checkbox" placeholder="Default visibility" name="visibility">
+  </div>
+  <div class="input-row" *ngIf="data.linked">
+    <label>
+       Linked Value:</label>
+    <input [(ngModel)]="data.value" type="text" placeholder="" name="Linked Value">
+  </div>
 </div>

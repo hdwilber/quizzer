@@ -15,4 +15,12 @@ div
     label
       | Visibility:
     input([(ngModel)]="data.visibility" type='checkbox', placeholder='Default visibility', name='visibility')
+  .input-row
+    label
+      | Linked:
+    input([(ngModel)]="data.linked" type='checkbox', placeholder='Default visibility', name='visibility')
+  .input-row(*ngIf="data.linked")
+    label 
+      | Linked Value:
+    input([(ngModel)]="data.value" type='text', placeholder='', name='Linked Value')
 

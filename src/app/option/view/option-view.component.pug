@@ -1,11 +1,19 @@
 .option-view(*ngIf='enode')
+  label(*ngIf="enode.data.type == 'link'")
+    select(*ngIf="aux")
+      option(*ngFor="let o of aux.children")
+        | {{o.label.data}}
   label(*ngIf="enode.data.type == 'option'")
     input(type='radio', [name]='enode.id')
     | {{enode.label.data}}
 
   .option-text(*ngIf="enode.data.type == 'text-short'")
+    label
+      | {{enode.label.data}}
     input(type='text', [name]='enode.id')
   .option-text(*ngIf="enode.data.type == 'text-long'")
+    label
+      | {{enode.label.data}}
     textarea([name]='enode.id')
 
 

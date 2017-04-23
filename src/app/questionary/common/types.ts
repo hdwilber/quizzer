@@ -26,6 +26,7 @@ export class Option {
   static TYPES = [
     { name: 'Option', code:'option' },
     { name: 'Text', code:'text-short' },
+    { name: 'Link', code:'link' },
     { name: 'Large Text', code:'text-long' },
     { name: 'Minimum', code: 'min' },
     { name: 'Maximum', code: 'max' }
@@ -36,7 +37,14 @@ export class Question extends E {
   subType: string;
   options: Option[];
   logics: Logic[];
+  linked: boolean;
 
+  static EXTRA = [
+    {
+      name: "Linked",
+      code: 'linked'
+    }
+  ];
   static TYPES = [
     {
       name: "Selection",
@@ -50,6 +58,28 @@ export class Question extends E {
           ]
         },
         {
+          name: "Radio",
+          code: "radio",
+          options: [
+            { name: 'Option', code: 'option' }
+          ]
+        },
+        {
+          name: "Checkbox",
+          code: "checkbox",
+          options: [
+            { name: 'Option', code: 'option' }
+          ]
+        },
+        {
+          name: "Simple Dropdown",
+          code: "dropdown",
+          options: [
+            { name: 'Option', code: 'option' }
+          ]
+        },
+
+        {
           name: "Level",
           code: "level",
           options: [
@@ -58,7 +88,7 @@ export class Question extends E {
           ]
         }
       ]
-    },
+    }, 
     {
       name: "Input",
       code: 'input', 
@@ -70,7 +100,9 @@ export class Question extends E {
             { name: 'Text Small', code: 'text-small' },
             { name: 'Text Large', code: 'text-large' }
           ]
-        }
+        },
+        { name: 'Text', code:'text-short' },
+        { name: 'Large Text', code:'text-long' },
       ]
     },
     {

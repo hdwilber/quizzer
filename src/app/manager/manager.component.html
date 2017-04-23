@@ -7,9 +7,11 @@
       </div>
     </div>
     <div class="col m9">
+      <button (click)="search()">Search</button>
       <button (click)="create()">Create Enode</button>
       <button (click)="edit()">Edit Enode</button>
       <button (click)="delete()">Delete Enode</button>
+      <button (click)="moveTo()">Move To</button>
       <ng-template dialog-anchor></ng-template>
       <div class="enodes-edition" *ngIf="selected">
         <enode-view [enode]="selected" [root]="selectedRoot"></enode-view>

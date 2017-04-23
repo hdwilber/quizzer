@@ -8,6 +8,13 @@
         <option-view [enode]="o"></option-view>
       </div>
     </div>
+    <div class="selection-simple" *ngIf="enode.data.sub_type == 'dropdown'">
+      <p class="title">{{enode.label.data}}</p>
+      <select>
+        <option *ngFor="let oa of aux.children">{{oa.label.data}}</option>
+        <option *ngFor="let op of enode.children">{{op.label.data}}</option>
+      </select>
+    </div>
     <div class="selection-level" *ngIf="enode.data.sub_type == 'level'">
       <p class="title">{{enode.label.data}}
         <input type="number">
@@ -17,7 +24,15 @@
   <div class="question-selection" *ngIf="enode.data.type == 'input'">
     <div class="input-text" *ngIf="enode.data.sub_type == 'text'">
       <label>{{enode.label.data}}</label>
-      <option-view *ngIf="enode.children.length == 1" [enode]="enode.children[0]"></option-view>
+      <option-view *ngFor="let o of enode.children" [enode]="o"></option-view>
+    </div>
+    <div class="input-text" *ngIf="enode.data.sub_type == 'text-short'">
+      <label>{{enode.label.data}}</label>
+      <input type="text">
+    </div>
+    <div class="input-text" *ngIf="enode.data.sub_type == 'text-long'">
+      <label>{{enode.label.data}}</label>
+      <textarea></textarea>
     </div>
   </div>
   <div class="question-selection" *ngIf="enode.data.type == 'remark'">

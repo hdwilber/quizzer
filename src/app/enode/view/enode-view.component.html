@@ -14,8 +14,16 @@
   </div>
   <div class="enode-edit logics" [hidden]="!(currentTab.code == 'logics')">
     <button (click)="createLogicElement()">Create Logic Element</button>
-    <enode *ngIf="enode.logics" [enode]="enode.logics" [current]="selectedLogic" (selected)="handleSelectedLogic($event)"></enode>
-    <ng-template dialog-anchor></ng-template>
+    <button (click)="deleteLogicElement()">Delete Logic Element</button>
+    <div class="logics-wrapper row">
+      <div class="logics-catalog col m3">
+        <enode *ngIf="enode.logics" [enode]="enode.logics" [current]="selectedLogic" (selected)="handleSelectedLogic($event)"></enode>
+      </div>
+      <div class="logics-view col m9">
+        <logics-view [enode]="selectedLogic"></logics-view>
+      </div>
+      <ng-template dialog-anchor></ng-template>
+    </div>
   </div>
   <div class="enode-edit stats" [hidden]="!(currentTab.code == 'stats')">
     <h4>

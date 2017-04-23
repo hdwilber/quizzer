@@ -1,7 +1,8 @@
 .content-main {
   width: 100%;
   .enodes-viewer {
-    overflow-x: scroll;
+    overflow: scroll;
+    height: 500px;
   }
   .enodes-edition {
     vertical-align: top;

@@ -25,7 +25,9 @@ import { EnodeEditComponent } from "./../enode/edit/enode-edit.component";
 export class ManagerComponent implements OnInit {
   qRoot: Enode;
   tqRoot: Enode;
+  zombies: Enode;
   selected: Enode;
+  selectIdx = 0;
   @ViewChild(DialogDirective) dialogAnchor: DialogDirective;
   dialogRef: ComponentRef<any>;
   selectedRoot: Enode;
@@ -43,36 +45,71 @@ export class ManagerComponent implements OnInit {
     this.selected = this.qRoot;
   }
 
+  moveTo() {
+    this.selectIdx = 1;
+  }
+
+  search () {
+    console.log(this.eService.search(this.selected.id));
+  }
   ngOnInit():void  {
     this.eService.getRoots()
     .then (
       res => {
         console.log(res);
         this.qRoot = res.questionaries;
+        this.eService.setRoot (this.qRoot);
         //this.tqRoot.children = res.takenQuizzes;
       }
     );
   }
   handleSelected(d:any) {
-    console.log("something has changed");
-    console.log(d);
-    this.selected = d;
+    if (this.selectIdx == 0) {
+      console.log(d);
+      this.selected = d;
 
-    if (d.type == 'questionary') {
-      if (d.children == null) {
-        this.eService.getById(d.id)
-        .then (res => {
-          console.log(res);
-          this.selected.children = res.children;
-          // Cloning data;
-        });
+      if (d.type == 'questionary') {
+        if (d.children == null) {
+          this.eService.getById(d.id)
+          .then (res => {
+            console.log(res);
+            this.selected.children = res.children;
+            // Cloning data;
+          });
+        }
+        this.selectedRoot = d;
       }
-      this.selectedRoot = d;
-    }
-    if (this.dialogRef != null && this.dialogRef.instance != null) {
-      this.dialogRef.instance.ref = this.selected;
+      if (this.dialogRef != null && this.dialogRef.instance != null) {
+        this.dialogRef.instance.ref = this.selected;
+      }
+    } else if (this.selectIdx == 1 && this.selected != d) {
+      this.selectIdx = 0;
+      if (d.children === undefined) {
+        d.children = new Array<Enode>();
+      }
+      if (this.selected != null) {
+        console.log("Trying to move");
+        let pa = this.eService.getParent (this.qRoot, this.selected) as Enode;
+        if (pa != null) {
+
+          this.eService.move( {
+            id: this.selected.id,
+            eRef: d.id
+          })
+          .then (res => {
+            if (res) {
+              console.log("Correct from Server...Moving To");
+              console.log(pa);
+              d.children.push(this.selected);
+              pa.children.splice(pa.children.indexOf(this.selected), 1);
+            }
+          });
+
+        }
+      }
     }
   }
+
 
   edit() {
     var aux: Enode = this.selected;
@@ -131,8 +168,9 @@ export class ManagerComponent implements OnInit {
             this.qRoot.children.push(res.res);
             break;
         }
+      } else {
+        this.dialogRef.destroy();
       }
-      this.dialogRef.destroy();
     });
   }
 

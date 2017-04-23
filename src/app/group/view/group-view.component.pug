@@ -3,6 +3,7 @@
     | Not visible by default
   p.title
     | {{enode.label.data}}
-  .questions(*ngFor='let o of enode.children')
-    question-view([enode]='o')
+  .group-children(*ngFor='let o of enode.children')
+    question-view(*ngIf="o.type == 'question'", [enode]='o')
+    group-view(*ngIf="o.type == 'group'", [enode]='o')
 

@@ -7,6 +7,14 @@
         | {{enode.label.data}}
       .options(*ngFor='let o of enode.children')
         option-view([enode]='o')
+    .selection-simple(*ngIf="enode.data.sub_type == 'dropdown'")
+      p.title
+        | {{enode.label.data}}
+      select
+        option(*ngFor='let oa of aux.children')
+            | {{oa.label.data}}
+        option(*ngFor='let op of enode.children')
+          | {{op.label.data}}
 
     .selection-level(*ngIf="enode.data.sub_type == 'level'")
       p.title
@@ -17,7 +25,15 @@
     .input-text(*ngIf="enode.data.sub_type == 'text'")
       label
         | {{enode.label.data}}
-      option-view(*ngIf="enode.children.length == 1", [enode]="enode.children[0]")
+      option-view(*ngFor="let o of enode.children", [enode]="o")
+    .input-text(*ngIf="enode.data.sub_type == 'text-short'")
+      label
+        | {{enode.label.data}}
+      input(type="text")
+    .input-text(*ngIf="enode.data.sub_type == 'text-long'")
+      label
+        | {{enode.label.data}}
+      textarea()
 
   .question-selection(*ngIf="enode.data.type == 'remark'")
     hr

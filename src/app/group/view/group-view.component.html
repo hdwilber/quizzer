@@ -2,7 +2,8 @@
 <div class="group" *ngIf="enode">
   <p *ngIf="!enode.data.default_visibility">Not visible by default</p>
   <p class="title">{{enode.label.data}}</p>
-  <div class="questions" *ngFor="let o of enode.children">
-    <question-view [enode]="o"></question-view>
+  <div class="group-children" *ngFor="let o of enode.children">
+    <question-view *ngIf="o.type == 'question'" [enode]="o"></question-view>
+    <group-view *ngIf="o.type == 'group'" [enode]="o"></group-view>
   </div>
 </div>

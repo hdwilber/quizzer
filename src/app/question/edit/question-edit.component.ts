@@ -22,7 +22,6 @@ export class QuestionEditComponent implements OnInit {
 
   setData(d: any) {
     console.log(d);
-
     let taux:any = Question.TYPES.find(e => {
       if (e.code == d.type){
         return true;
@@ -37,7 +36,9 @@ export class QuestionEditComponent implements OnInit {
     this.data = {
       type: taux,
       subType : staux,
-      visibility: d.default_visibility
+      visibility: d.default_visibility,
+      linked: d.linked,
+      value: d.value
     };
   }
 
@@ -45,6 +46,8 @@ export class QuestionEditComponent implements OnInit {
     // Return data according to requirements
     return {
       visibility: this.data.visibility,
+      qLinked: this.data.linked,
+      qValue: this.data.value as number,
       qType: this.data.type.code,
       qSubType: this.data.subType.code,
       type: 'question'

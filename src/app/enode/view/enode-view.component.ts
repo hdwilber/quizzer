@@ -122,6 +122,19 @@ export class EnodeViewComponent implements OnInit {
   createEnode() {
   }
 
+  deleteLogicElement() {
+    this.eService.delete(this.selectedLogic)
+    .then (res =>
+      {
+        if (res) {
+          var p = this.eService.getParent(this.enode.logics, this.selectedLogic);
+          p.children.splice(p.children.indexOf(this.selectedLogic), 1);
+        } else {
+          console.log("Something is wrong");
+        }
+    });
+  }
+
   handleSelectedLogic(l) {
     this.selectedLogic = l;
     console.log(l);

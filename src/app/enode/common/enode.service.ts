@@ -16,6 +16,8 @@ export class EnodeService {
     session: Session;
     restService: RestService;
     user: User;
+
+    root: Enode;
   
     constructor (private router: Router, private http:Http, restService: RestService, private userService: UserService) {
         this.session = userService.session;
@@ -50,6 +52,35 @@ export class EnodeService {
             return Promise.resolve();
           });
     }
+
+    search (id: number) {
+      return this._search (this.root, id);
+    }
+
+    _search (e: Enode, id:number) {
+      if (e.id == id) {
+        return e;
+      } else {
+        if (e.children === undefined) {
+          return null;
+        } else if (e.children.length == 0) {
+          return null;
+        }
+        var res = null;
+        for(let x = 0; x < e.children.length; x++) {
+          if (e.children[x] == id) {
+            res = e.children[x];
+            break;
+          } else {
+            res = this._search (e.children[x], id);
+            if (res != null) {
+              break;
+            }
+          }
+        }
+      }
+      return res;
+    }
     getChildren(id): Promise<Array<Enode>> {
       return this.http.get(this.restService.getServerPath() + '/elements/'+id+'/children',
                            {headers: this.restService.createHeaders()})
@@ -68,6 +99,9 @@ export class EnodeService {
           });
     }
 
+    setRoot (r: Enode) {
+      this.root = r;
+    }
     getAddingTypes(): Promise<AddingType[]> {
       return this.http.get(this.restService.getServerPath() + '/elements/addingTypes',
                            {headers: this.restService.createHeaders()})
@@ -168,6 +202,24 @@ export class EnodeService {
           })
           .catch(err => { 
             console.log ("Delete Element failed");
+            this.checkUnauthorized(err);
+            console.log(err);
+            if (err.status == 401) {
+            }
+            return Promise.resolve();
+          });
+    }
+
+    move (d: any): Promise<boolean> {
+      return this.http.post(this.restService.getServerPath() + '/elements/'+d.id+'/move', JSON.stringify(d),
+                           {headers: this.restService.createHeaders()})
+          .toPromise()
+          .then( res => {
+            var aux = res.json();
+            return aux.data as boolean;
+          })
+          .catch(err => { 
+            console.log ("Create Element failed");
             this.checkUnauthorized(err);
             console.log(err);
             if (err.status == 401) {

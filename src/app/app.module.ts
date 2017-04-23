@@ -59,10 +59,16 @@ import { OptionCreateComponent } from './option/create/option-create.component';
 import { OptionEditComponent } from './option/edit/option-edit.component';
 
 import { LogicsCreateComponent } from './logics/create/logics-create.component';
+import { LogicsViewComponent } from './logics/view/logics-view.component';
 import { LogicCreateComponent } from './logics/logic/logic-create.component';
+import { LogicViewComponent } from './logics/logic/logic-view.component';
+
 import { LogicEditComponent } from './logics/edit/logic-edit.component';
 import { MatchLogicCreateComponent } from './logics/match-logic/match-logic-create.component';
+import { MatchLogicViewComponent } from './logics/match-logic/match-logic-view.component';
+
 import { MatchCreateComponent } from './logics/match/match-create.component';
+import { MatchViewComponent } from './logics/match/match-view.component';
 
 
 import { TakenQuizActionComponent } from './taken-quiz/action/taken-quiz-action.component';
@@ -114,8 +120,12 @@ import { DialogDirective } from "./common/dialog.directive";
     QuestionViewComponent,
 
     LogicsCreateComponent,
+    LogicsViewComponent,
     LogicCreateComponent,
     LogicEditComponent,
+    LogicViewComponent,
+    MatchLogicViewComponent,
+    MatchViewComponent,
 
     OptionCreateComponent,
     OptionEditComponent,

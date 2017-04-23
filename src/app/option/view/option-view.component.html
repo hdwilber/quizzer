@@ -1,12 +1,19 @@
 
 <div class="option-view" *ngIf="enode">
+  <label *ngIf="enode.data.type == 'link'">
+    <select *ngIf="aux">
+      <option *ngFor="let o of aux.children">{{o.label.data}}</option>
+    </select>
+  </label>
   <label *ngIf="enode.data.type == 'option'">
     <input type="radio" [name]="enode.id">{{enode.label.data}}
   </label>
   <div class="option-text" *ngIf="enode.data.type == 'text-short'">
+    <label>{{enode.label.data}}</label>
     <input type="text" [name]="enode.id">
   </div>
   <div class="option-text" *ngIf="enode.data.type == 'text-long'">
+    <label>{{enode.label.data}}</label>
     <textarea [name]="enode.id"></textarea>
   </div>
   <div class="option-text" *ngIf="enode.data.type == 'min'">
