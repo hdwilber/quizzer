@@ -10,12 +10,6 @@ import {HashLocationStrategy, Location, LocationStrategy} from '@angular/common'
 
 import { AppComponent } from './app.component';
 
-//Angular material
-import { MaterialModule } from '@angular/material';
-import 'hammerjs';
-import { FlexLayoutModule } from '@angular/flex-layout';
-
-
 //Services 
 import { UserService } from "./user/common/user.service";
 import { RestService } from "./common/rest.service";
@@ -28,8 +22,6 @@ import { UserLoginComponent }  from './user/login/user-login.component';
 import { UserRegisterComponent }  from './user/register/user-register.component';
 import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
-
-import { DashboardComponent } from './dashboard/dashboard.component';
 
 import { QuestionaryCreateComponent } from './questionary/create/questionary-create.component';
 import { QuestionaryEditComponent } from './questionary/edit/questionary-edit.component';
@@ -60,10 +52,11 @@ import { OptionEditComponent } from './option/edit/option-edit.component';
 
 import { LogicsCreateComponent } from './logics/create/logics-create.component';
 import { LogicsViewComponent } from './logics/view/logics-view.component';
+import { LogicsEditComponent } from './logics/edit/logics-edit.component';
+
 import { LogicCreateComponent } from './logics/logic/logic-create.component';
 import { LogicViewComponent } from './logics/logic/logic-view.component';
 
-import { LogicEditComponent } from './logics/edit/logic-edit.component';
 import { MatchLogicCreateComponent } from './logics/match-logic/match-logic-create.component';
 import { MatchLogicViewComponent } from './logics/match-logic/match-logic-view.component';
 
@@ -77,13 +70,6 @@ import { TakenQuizHistoryComponent } from './taken-quiz/history/taken-quiz-histo
 
 
 import { ManagerComponent } from './manager/manager.component';
-
-
-//import { LogicEditComponent } from './questionary/logic-edit.component';
-//import { MatchsEditorComponent } from './questionary/matchs-editor.component';
-
-//import { TreeViewComponent } from "./tree-view/tree-view.component";
-import { TreeNodeComponent } from "./tree-view/tree-node.component";
 
 import { EnodeComponent } from "./enode/enode.component";
 import { EnodeEditComponent } from "./enode/edit/enode-edit.component";
@@ -104,7 +90,6 @@ import { DialogDirective } from "./common/dialog.directive";
     UserRegisterComponent,
     HeaderComponent,
     HomeComponent, 
-    DashboardComponent,
     DialogDirective, 
 
     QuestionaryCreateComponent,
@@ -121,8 +106,9 @@ import { DialogDirective } from "./common/dialog.directive";
 
     LogicsCreateComponent,
     LogicsViewComponent,
+    LogicsEditComponent,
+
     LogicCreateComponent,
-    LogicEditComponent,
     LogicViewComponent,
     MatchLogicViewComponent,
     MatchViewComponent,
@@ -138,8 +124,7 @@ import { DialogDirective } from "./common/dialog.directive";
 
     TakenQuizActionComponent,
     TakenQuizHistoryComponent,
-    //TreeViewComponent,
-    TreeNodeComponent,
+
     EnodeComponent,
     EnodeEditComponent,
     EnodeViewComponent,
@@ -151,10 +136,7 @@ import { DialogDirective } from "./common/dialog.directive";
     FormsModule,
     CoolStorageModule,
     HttpModule,
-    AppRoutingModule,
-    MaterialModule,
-    FlexLayoutModule,
-    BrowserAnimationsModule,
+    AppRoutingModule
   ],
   providers: [
     RestService,

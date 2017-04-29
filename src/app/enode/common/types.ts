@@ -21,3 +21,9 @@ export class AddingType{
   name: string;
   description: string;
 }
+
+export class Label {
+  id: number;
+  type: string;
+  data: string;
+}

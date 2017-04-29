@@ -1,2 +1,8 @@
 
-<div></div>
+<div *ngIf="types">
+  <div class="input-row">
+    <select [(ngModel)]="data.type" placeholder="Type">
+      <option *ngFor="let t of types" [ngValue]="t">{{t.name}}</option>
+    </select>
+  </div>
+</div>

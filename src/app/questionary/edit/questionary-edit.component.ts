@@ -14,17 +14,29 @@ import { Questionary, Option, Group } from "../common/types";
 
 export class QuestionaryEditComponent implements OnInit {
   data: any;
+  types: Array<any>;
 
   constructor (private router: Router, private qService:QuestionaryService) {
+    this.types = qService.types;
   }
   ngOnInit():void  {
   }
 
   setData(d: any) {
-    this.data = d;
+    let taux:any = this.qService.types.find(e => {
+      if (e.code == d.type){
+        return true;
+      }
+    });
+
+    this.data = {
+      type: taux
+    };
   }
   getData() {
     return {
+      quType: this.data.type.code,
+      type: 'questionary'
     };
   }
 }

@@ -2,7 +2,7 @@
 <div class="question" *ngIf="enode">
   <p *ngIf="!enode.data.default_visibility">Not visible by default</p>
   <div class="question-selection" *ngIf="enode.data.type == 'selection'">
-    <div class="selection-simple" *ngIf="enode.data.sub_type == 'simple'">
+    <div class="selection-simple" *ngIf="enode.data.sub_type == 'simple' || enode.data.sub_type == 'radio'">
       <p class="title">{{enode.label.data}}</p>
       <div class="options" *ngFor="let o of enode.children">
         <option-view [enode]="o"></option-view>
@@ -24,7 +24,7 @@
   <div class="question-selection" *ngIf="enode.data.type == 'input'">
     <div class="input-text" *ngIf="enode.data.sub_type == 'text'">
       <label>{{enode.label.data}}</label>
-      <option-view *ngFor="let o of enode.children" [enode]="o"></option-view>
+      <input type="text">
     </div>
     <div class="input-text" *ngIf="enode.data.sub_type == 'text-short'">
       <label>{{enode.label.data}}</label>

@@ -16,7 +16,6 @@ import { MatchCreateComponent } from "../match/match-create.component";
 
 
 @Component({
-  //moduleId: module.id,
   selector: 'logics-create',
   templateUrl: './logics-create.component.html'
 })
@@ -82,12 +81,17 @@ export class LogicsCreateComponent implements OnInit {
 
 
   create() {
+    console.log ("Starting to create Logic");
     let data = this.dialogRef.instance.getData();
-    if (data.type.code == 'logic') {
+    console.log(data);
+    if (data.type == 'logic') {
+      console.log("RASDFASFD");
+      console.log(this.enode);
       data.eRef = this.enode.id;
     } else {
       data.eRef = this.ref.id;
     }
+    console.log ("Starting to create Logic 2");
     data.code = this.tmp.code;
     data.addingType = "append-in";
     data.labelType = "text";
@@ -97,9 +101,10 @@ export class LogicsCreateComponent implements OnInit {
     console.log("DATA TO SEND");
     console.log(data);
 
+    console.log ("Starting to create Logic 3");
     this.eService.create(data)
     .then( q => {
-      if (data.type.code == "logic") {
+      if (data.type == "logic") {
         data.ref = this.enode.logics;
       } else {
         data.ref = this.ref;

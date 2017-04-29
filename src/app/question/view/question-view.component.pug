@@ -2,7 +2,7 @@
   p(*ngIf='!enode.data.default_visibility')
     | Not visible by default
   .question-selection(*ngIf="enode.data.type == 'selection'")
-    .selection-simple(*ngIf="enode.data.sub_type == 'simple'")
+    .selection-simple(*ngIf="enode.data.sub_type == 'simple' || enode.data.sub_type == 'radio'")
       p.title
         | {{enode.label.data}}
       .options(*ngFor='let o of enode.children')
@@ -25,7 +25,7 @@
     .input-text(*ngIf="enode.data.sub_type == 'text'")
       label
         | {{enode.label.data}}
-      option-view(*ngFor="let o of enode.children", [enode]="o")
+      input(type="text")
     .input-text(*ngIf="enode.data.sub_type == 'text-short'")
       label
         | {{enode.label.data}}

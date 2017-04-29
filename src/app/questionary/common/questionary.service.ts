@@ -15,12 +15,17 @@ export class QuestionaryService {
     restService: RestService;
     user: User;
     questions: Question[];
+    types = new Array<any>();
   
     constructor (private router: Router, private http:Http, restService: RestService, private userService: UserService) {
         this.session = userService.session;
         this.restService = restService;
-    }
 
+        this.getTypes()
+        .then (res => {
+          this.types = res;
+        });
+    }
 
     checkUnauthorized(err) {
       if (err.status == 401) {
@@ -29,6 +34,25 @@ export class QuestionaryService {
       }
       return err;
     }
+
+    getTypes() : Promise<Array<any>> {
+      return this.http.get(this.restService.getServerPath() + '/questionaries/types', 
+                           {headers: this.restService.createHeaders()})
+          .toPromise()
+          .then( res => {
+            var aux = res.json();
+            return aux.data as Array<any>;
+          })
+          .catch(err => { 
+            console.log ("Retrieving questionary types failed");
+            this.checkUnauthorized(err);
+            console.log(err);
+            if (err.status == 401) {
+            }
+            return Promise.resolve();
+          });
+    }
+
     create(d: any) : Promise<Questionary> {
       return this.http.post(this.restService.getServerPath() + '/questionaries', JSON.stringify(d),
                            {headers: this.restService.createHeaders()})

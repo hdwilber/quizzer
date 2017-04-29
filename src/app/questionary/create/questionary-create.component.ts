@@ -14,14 +14,21 @@ import { Questionary, Option, Group } from "../common/types";
 
 export class QuestionaryCreateComponent implements OnInit {
   quest: Questionary = new Questionary();
+  types: Array<any>;
+  tmp: any;
 
   constructor (private router: Router, private qService:QuestionaryService) {
+    this.types = qService.types;
+    this.tmp = {
+      type: qService.types[0]
+    }
   }
   ngOnInit():void  {
   }
 
   getData() {
     return {
+      quType: this.tmp.type.code,
       type: 'questionary'
     };
   }

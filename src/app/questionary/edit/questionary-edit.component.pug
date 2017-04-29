@@ -1,1 +1,5 @@
-div
+div(*ngIf="types")
+  .input-row
+    select([(ngModel)]="data.type", placeholder='Type')
+      option(*ngFor="let t of types", [ngValue]="t")
+        | {{t.name}}
